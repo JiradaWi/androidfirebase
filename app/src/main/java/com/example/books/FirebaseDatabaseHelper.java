@@ -9,6 +9,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class FirebaseDatabaseHelper {
     private FirebaseDatabase mDatabase;
@@ -29,13 +30,13 @@ public class FirebaseDatabaseHelper {
         );
     }
 
-    public void readBooks(){
+    public void readBooks(final DataStatus dataStatus){
         mReferenceBooks.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 books.clear();
                 List<String> keys = new ArrayList<>();
-                for(DataSnapshot keyNode: DataSnapshot.getChildern()){
+                for(DataSnapshot keyNode: snapshot.getChildren()){
                     keys.add(keyNode.getKey());
                     Book book = keyNode.getValue(Book.class);
                     books.add(book);
