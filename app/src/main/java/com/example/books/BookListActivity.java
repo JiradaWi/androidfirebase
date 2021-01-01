@@ -1,6 +1,7 @@
 package com.example.books;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,6 +19,7 @@ public class BookListActivity extends AppCompatActivity {
         new FirebaseDatabaseHelper().readBooks(new FirebaseDatabaseHelper.DataStatus() {
             @Override
             public void DataIsLoaded(List<Book> books, List<String> keys) {
+                findViewById(R.id.loading_book).setVisibility(View.GONE);
                 new RecyclerView_Config().setConfig(mRecyclerView, BookListActivity.this, books, keys);
             }
 
