@@ -52,4 +52,11 @@ public class FirebaseDatabaseHelper {
             }
         });
     }
+
+    public void addBook(Book book, final DataStatus dataStatus){
+        String key = mReferenceBooks.push().getKey();
+        mReferenceBooks.child(key).setValue(book).addOnSuccessListener(
+                dataStatus.DataInserted();
+        );
+    }
 }
