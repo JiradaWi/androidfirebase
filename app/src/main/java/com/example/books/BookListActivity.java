@@ -1,6 +1,9 @@
 package com.example.books;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,5 +41,22 @@ public class BookListActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.booklist_activity_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuitem){
+        switch (menuitem.getItemId()){
+            case R.id.new_book:
+                startActivity(new Intent(this, NewBookActivity.class));
+                return true;
+
+        }
+        return super.onOptionsItemSelected(menuitem);
     }
 }
