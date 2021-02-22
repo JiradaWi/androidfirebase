@@ -1,7 +1,9 @@
 package com.example.books;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -36,6 +38,19 @@ public class RecyclerView_Config {
             mAuthor     = (TextView) itemView.findViewById(R.id.author_txtview);
             mISBN       = (TextView) itemView.findViewById(R.id.isbn_textview);
             mCategory   = (TextView) itemView.findViewById(R.id.category_txtview);
+
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(mContext, BookDetailActivity.class);
+
+                    intent.putExtra("key", key);
+                    intent.putExtra("title", mTitle.getText());
+
+                    mContext.startActivity(intent);
+                   // intent.putExtra("key", key);
+                }
+            });
         }
         public void bind(Book book, String key){
             mTitle.setText(book.getTitle());

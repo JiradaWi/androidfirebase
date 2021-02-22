@@ -30,7 +30,7 @@ public class NewBookActivity extends AppCompatActivity {
         mISBN_editTxt = (EditText) findViewById(R.id.isbn_editTxt);
         mBook_categories_spinner = (Spinner) findViewById(R.id.book_categories_spinner);
 
-        mAdd_btn = (Button) findViewById(R.id.add_btn);
+        mAdd_btn = (Button) findViewById(R.id.delete_btn);
         mBack_btn = (Button) findViewById(R.id.back_btn);
         
         mAdd_btn.setOnClickListener(new View.OnClickListener(){

@@ -64,6 +64,17 @@ public class FirebaseDatabaseHelper {
                     }
                 }
         );
+    }
 
+    public void deleteBook(String key, final DataStatus dataStatus){
+       // String key = mReferenceBooks.push().getKey();
+        mReferenceBooks.child(key).setValue(null).addOnSuccessListener(
+                new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        dataStatus.DataisDeleted();
+                    }
+                }
+        );
     }
 }
